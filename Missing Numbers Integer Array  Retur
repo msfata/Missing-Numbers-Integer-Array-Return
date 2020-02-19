@@ -1,0 +1,25 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Test3 {
+	public static void main(String[] args) {
+
+		Integer[] array = showMissngNumbers(15, 3, 10);
+		for (Integer integer : array) {
+			System.out.print(integer + " ");
+		}
+	}
+
+	public static Integer[] showMissngNumbers(Integer... array) {
+		Arrays.sort(array);
+		List<Integer> fullList = new ArrayList<Integer>();
+		for (int i = array[0]; i < array[array.length - 1]; i++) {
+			fullList.add(i);
+		}
+		List<Integer> list = new ArrayList<Integer>(Arrays.asList(array));
+		fullList.removeAll(list);
+		Integer[] arr = new Integer[fullList.size()];
+		return fullList.toArray(arr);
+	}
+}
